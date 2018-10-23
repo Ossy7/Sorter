@@ -1,31 +1,15 @@
-#Reads two plain files and finds their common occurences
+import os
+__version__ = "1.0.1"
 
-
-def isorter(file1, file2):
+def sorter(file1, file2):
     '''finds common occurences between 2 files'''
-    try:
-        fp1 = open(file1, 'rb')
-    except Exception:
-        print("Ensure " +file1+" is in the current directory and you have access.")
-        return
-    try:
-        fp2 = open(file2, 'rb')
-    except Exception:
-        print( "Ensure "+file2+" is in the current directory and you have access.")
-        return
-    reader1 = {line for line in fp1.readlines()}
-    reader2 = {line for line in fp2.readlines()}
-    fp1.close()
-    fp2.close()
-    return (reader1 & reader2)
-
-
-
-
-
-
-
-
-    
-
-
+    if os.path.isfile(file1) and os.path.isfile(file2):
+        if os.access(file1, os.R_OK) and os.access(file2, os.R_OK):
+           reader = {(line1, line2) for line1 in open(file1, 'rb').readlines() for line2 in open(file2, 'rb').readlines() if line1 == line2}
+           return reader
+        else:
+            print("Ensure you have permission to the two files.")
+    else:
+        print("Ensure both are files and present in the current directory.")
+            
+            
