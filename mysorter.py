@@ -1,5 +1,5 @@
 import os
-__version__ = "1.0.2"
+__version__ = "1.0.3"
 
 def sorter(file1, file2):
     '''finds common occurences between 2 plain files'''
@@ -13,3 +13,17 @@ def sorter(file1, file2):
         print("Ensure both are files and present in the current directory.")
             
             
+def word_counter(myfile):
+    '''finds the number of words in a given file'''
+    if os.path.isfile(myfile):
+        if os.access(myfile, os.R_OK):
+            number_words = [len(word.split()) for word in open(myfile, 'rb').readlines()]
+            wCounter = sum(number_words)
+            return wCounter
+        else:
+            print("Ensure you have permission to the file.")
+    else:
+        print("Ensure the file is present in the current directory.")
+    
+
+    
