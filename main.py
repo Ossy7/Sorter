@@ -9,7 +9,7 @@ def main():
         WordCounter = word_counter(file1)
         wordCounter = word_counter(file2)
         if common_occurence:
-            print("There are " +" %s "  %len(common_occurence) +" common occurrence.")
+            print("There are  %s  common occurrence. "  %common_occurence)
         print("There are %s words in %s" %(WordCounter, file1))
         print("There are %s words in %s" %(wordCounter, file2))
             

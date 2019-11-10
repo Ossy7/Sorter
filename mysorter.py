@@ -7,7 +7,7 @@ def sorter(file1, file2):
     if os.path.isfile(file1) and os.path.isfile(file2):
         if os.access(file1, os.R_OK) and os.access(file2, os.R_OK):
            reader = {(line1, line2) for line1 in open(file1, 'rb').readlines() for line2 in open(file2, 'rb').readlines() if line1.split() == line2.split()}
-           return reader
+           return len(reader)
         else:
             print("Ensure you have permission to the two files.")
     else:
